@@ -14,10 +14,13 @@ query, filter and threshold lives in `config.json`.
 ## What it does
 
 1. **Collects** live postings from:
-   - **JobsDB HK** – the largest HK board, rendered with Playwright + real Chrome
-   - **CTgoodjobs HK** – structured `JobPosting` data
+   - **LinkedIn guest search** – HK jobs without login; works from cloud IPs
+   - **eFinancialCareers HK** – embedded JSON feed; finance/tech roles
+   - **JPMorgan Oracle HCM feed** – HK requisitions with responsibilities/qualifications
    - **ATS boards** – Greenhouse / Lever / Ashby boards of companies with HK offices
      (Binance, OKX, Bybit, Lalamove, Flexport, MongoDB by default)
+   - **JobsDB HK** – Playwright + real Chrome; works locally, Cloudflare-blocked in the cloud
+   - **CTgoodjobs HK** – JSON-LD via Chrome; works locally, blocked in the cloud
 2. **Filters** titles with configurable regexes: keeps data / analytics / AI / ML / LLM /
    agent / solution roles, drops senior, manager, sales and non-technical noise.
 3. **Scores** each JD 0-100 against the CV with `DeepSeek-V4.1-Flash-1017`, returning a role family,
@@ -29,7 +32,7 @@ query, filter and threshold lives in `config.json`.
    - a direct apply link
 5. **Publishes** a static job board (`docs/`) where you can search, filter, bookmark and
    mark roles as applied. It refreshes with every scan and needs no database.
-5. **Remembers** everything it has seen in `data/seen_jobs.json`, so you only get new jobs.
+6. **Remembers** everything it has seen in `data/seen_jobs.json`, so you only get new jobs.
    High scorers that missed the email cap are re-surfaced in later digests.
 
 ```
@@ -233,7 +236,9 @@ Everything is in `config.json`:
 | `title_include_regex` | must match to be considered |
 | `title_exclude_regex` | senior/lead/manager roles are dropped |
 | `blocked_title_regex` | sales, support, HR, property, etc. |
-| `sources` | turn JobsDB / CTgoodjobs / ATS on or off |
+| `sources` | turn any source on/off: `jobsdb`, `ctgoodjobs`, `ats`, `linkedin`, `oracle`, `efinancialcareers` |
+| `linkedin.pages_per_query`, `efinancialcareers.pages_per_query` | result pages per search query |
+| `oracle.host`, `oracle.site`, `oracle.company` | Oracle HCM tenant (JPMorgan by default) |
 | `ats.greenhouse`, `ats.lever`, `ats.ashby` | board slugs to scan |
 | `board_min_score` | lowest score that appears on the web board (default 50) |
 | `board_include_analysis` | include CV-derived why/gaps on the board; keep `false` for a public site |
@@ -267,10 +272,11 @@ To start from scratch, reset that file to:
 
 Known limits:
 
-- **JobsDB uses Cloudflare.** It works from a normal browser and from this machine, but
-  GitHub's datacenter IPs may occasionally be challenged. The email's *Source health*
-  footer shows this. If it persists, the CTgoodjobs + ATS sources still run; alternatives
-  are a free Oracle Cloud VM or a residential proxy.
+- **Cloud IP blocks.** JobsDB (Cloudflare) and CTgoodjobs (bot wall) reject GitHub's
+  datacenter IPs even through Chrome, curl_cffi and cloudscraper — verified by probe.
+  The cloud therefore leans on LinkedIn, eFinancialCareers, JPMorgan and the ATS boards;
+  JobsDB and CTgoodjobs still contribute when the scanner runs locally. The email's
+  *Source health* footer shows which sources succeeded each run.
 - **Scores are advice, not a verdict.** The model reads the JD excerpt, not the whole page.
   Always open the apply link before deciding.
 - **Personal use only.** Keep request volume low (the scanner pauses between pages);
@@ -298,6 +304,9 @@ jobscan/
   sources/
     jobsdb.py             Playwright search + JD detail
     ctgoodjobs.py         JSON-LD search + JobPosting detail
+    linkedin.py           guest search + JD detail
+    efinancial.py         embedded JSON feed
+    oracle.py             Oracle HCM feed (JPMorgan)
     ats.py                Greenhouse / Lever / Ashby
 docs/                     static job board (index.html, assets, generated data)
 data/seen_jobs.json       committed dedupe state

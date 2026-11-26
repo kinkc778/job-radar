@@ -37,7 +37,21 @@
   "sources": {
     "jobsdb": true,
     "ctgoodjobs": true,
-    "ats": true
+    "ats": true,
+    "linkedin": true,
+    "oracle": true,
+    "efinancialcareers": true
+  },
+  "efinancialcareers": {
+    "pages_per_query": 2
+  },
+  "linkedin": {
+    "pages_per_query": 2
+  },
+  "oracle": {
+    "host": "jpmc.fa.oraclecloud.com",
+    "site": "CX_1001",
+    "company": "JPMorgan Chase"
   },
   "jobsdb": {
     "pages_per_query": 1,

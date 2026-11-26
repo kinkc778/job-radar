@@ -10,7 +10,7 @@ from .config import Config
 from .models import Job
 from .prefilter import dedupe_enriched, dedupe_jobs, quick_score, title_relevant
 from .scoring import Scorer
-from .sources import ats, ctgoodjobs, jobsdb
+from .sources import ats, ctgoodjobs, efinancial, jobsdb, linkedin, oracle
 from .state import State
 from .util import hk_now, iso_now
 
@@ -87,6 +87,38 @@ def run(cfg: Config, args) -> int:
                 health["ats"] = {"ok": False, "count": 0, "error": str(e)[:160]}
                 log.error("ats source failed: %s", str(e)[:200])
 
+        if "linkedin" in enabled:
+            try:
+                found = linkedin.collect(
+                    cfg.queries, pages=int(cfg.linkedin.get("pages_per_query", 2))
+                )
+                raw.extend(found)
+                health["linkedin"] = {"ok": True, "count": len(found)}
+            except Exception as e:
+                health["linkedin"] = {"ok": False, "count": 0, "error": str(e)[:160]}
+                log.error("linkedin source failed: %s", str(e)[:200])
+
+        if "oracle" in enabled:
+            try:
+                found = oracle.collect(cfg)
+                raw.extend(found)
+                health["oracle"] = {"ok": True, "count": len(found)}
+            except Exception as e:
+                health["oracle"] = {"ok": False, "count": 0, "error": str(e)[:160]}
+                log.error("oracle source failed: %s", str(e)[:200])
+
+        if "efinancialcareers" in enabled:
+            try:
+                found = efinancial.collect(
+                    cfg.queries,
+                    pages=int(cfg.efinancialcareers.get("pages_per_query", 2)),
+                )
+                raw.extend(found)
+                health["efinancialcareers"] = {"ok": True, "count": len(found)}
+            except Exception as e:
+                health["efinancialcareers"] = {"ok": False, "count": 0, "error": str(e)[:160]}
+                log.error("efinancialcareers source failed: %s", str(e)[:200])
+
         if not raw:
             log.error("no listings collected from any source")
             if any(h.get("ok") for h in health.values()):
@@ -114,11 +146,12 @@ def run(cfg: Config, args) -> int:
         budget = int(args.limit or cfg.max_detail_fetches)
         hard_cap = int(budget * 1.5)
         caps = {
-            "jobsdb": int(budget * 0.55),
-            "ctgoodjobs": int(budget * 0.25),
-            "greenhouse": budget - int(budget * 0.55) - int(budget * 0.25),
+            "jobsdb": int(budget * 0.35),
+            "linkedin": int(budget * 0.35),
+            "ctgoodjobs": int(budget * 0.15),
         }
-        queues = {"jobsdb": [], "ctgoodjobs": [], "greenhouse": []}
+        caps["greenhouse"] = max(0, budget - sum(caps.values()))
+        queues = {k: [] for k in ("jobsdb", "linkedin", "ctgoodjobs", "greenhouse")}
         selected: list[Job] = []
 
         for job in relevant:
@@ -146,6 +179,9 @@ def run(cfg: Config, args) -> int:
             n = ctgoodjobs.enrich(queues["ctgoodjobs"], len(queues["ctgoodjobs"]),
                                   session=session)
             log.info("ctgoodjobs: fetched %d/%d JDs", n, len(queues["ctgoodjobs"]))
+        if queues["linkedin"]:
+            n = linkedin.enrich(queues["linkedin"], len(queues["linkedin"]))
+            log.info("linkedin: fetched %d/%d JDs", n, len(queues["linkedin"]))
         if queues["greenhouse"]:
             n = ats.enrich(queues["greenhouse"], len(queues["greenhouse"]))
             log.info("greenhouse: fetched %d/%d JDs", n, len(queues["greenhouse"]))

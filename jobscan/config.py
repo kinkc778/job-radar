@@ -47,6 +47,9 @@ class Config:
         self.jobsdb = dict(self.raw.get("jobsdb", {}))
         self.ctgoodjobs = dict(self.raw.get("ctgoodjobs", {}))
         self.ats = dict(self.raw.get("ats", {}))
+        self.linkedin = dict(self.raw.get("linkedin", {}))
+        self.oracle = dict(self.raw.get("oracle", {}))
+        self.efinancialcareers = dict(self.raw.get("efinancialcareers", {}))
 
         self.include_re = re.compile(self.raw.get("title_include_regex", ".*"))
         self.exclude_re = re.compile(self.raw.get("title_exclude_regex", r"^\b$"))
