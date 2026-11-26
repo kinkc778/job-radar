@@ -3534,12 +3534,13 @@
    "source": "ctgoodjobs",
    "xkey": "excel technology international hong kong limited|data engineer five day work weeks",
    "last_seen": "2026-11-26T15:57:53+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 80,
    "role_family": "Data Engineering",
    "location": "Hong Kong, Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-26T16:20:10+00:00"
   },
   "ctgoodjobs:10313130": {
    "first_seen": "2026-11-26T15:57:53+00:00",
@@ -3774,12 +3775,13 @@
    "source": "ctgoodjobs",
    "xkey": "match talent limited|ai engineer",
    "last_seen": "2026-11-26T15:59:30+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 78,
    "role_family": "AI / ML Engineering",
    "location": "Hong Kong, Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-26T16:20:10+00:00"
   },
   "ctgoodjobs:10332200": {
    "first_seen": "2026-11-26T15:59:30+00:00",
@@ -3864,12 +3866,13 @@
    "source": "ctgoodjobs",
    "xkey": "bright international education limited|ai and business systems engineer",
    "last_seen": "2026-11-26T15:59:30+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 76,
    "role_family": "AI / ML Engineering",
    "location": "Mong Kok, Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-26T16:20:10+00:00"
   },
   "ctgoodjobs:10333298": {
    "first_seen": "2026-11-26T15:59:30+00:00",
@@ -3924,12 +3927,13 @@
    "source": "ctgoodjobs",
    "xkey": "goip aula limited|forward deployed engineer",
    "last_seen": "2026-11-26T15:59:30+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 80,
    "role_family": "Solution Engineering",
    "location": "Wong Tai Sin District, Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-26T16:20:10+00:00"
   },
   "ctgoodjobs:10333476": {
    "first_seen": "2026-11-26T15:59:30+00:00",
@@ -4119,12 +4123,13 @@
    "source": "jobsdb",
    "xkey": "orient overseas container line ltd oocl|technical analyst data science engineering",
    "last_seen": "2026-11-26T16:02:49+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 84,
    "role_family": "AI / ML Engineering",
    "location": "Science Park, Tai Po District",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-26T16:20:10+00:00"
   },
   "jobsdb:96078466": {
    "first_seen": "2026-11-26T16:02:49+00:00",
@@ -4485,6 +4490,30 @@
     "jobsdb": {
      "ok": true,
      "count": 250
+    }
+   }
+  },
+  {
+   "at": "2026-11-26T16:20:10+00:00",
+   "scanned": 321,
+   "new": 252,
+   "candidates": 0,
+   "evaluated": 0,
+   "matched": 0,
+   "emailed": 0,
+   "elapsed": 236,
+   "sources": {
+    "jobsdb": {
+     "ok": false,
+     "count": 0
+    },
+    "ctgoodjobs": {
+     "ok": false,
+     "count": 0
+    },
+    "ats": {
+     "ok": true,
+     "count": 329
     }
    }
   }
