@@ -10,7 +10,8 @@ from .config import Config
 from .models import Job
 from .prefilter import dedupe_enriched, dedupe_jobs, quick_score, title_relevant
 from .scoring import Scorer
-from .sources import ats, ctgoodjobs, efinancial, jobsdb, linkedin, oracle, workable
+from .sources import (ats, ctgoodjobs, efinancial, jobsdb, linkedin, oracle,
+                      standardchartered, workable)
 from .state import State
 from .util import hk_now, iso_now
 
@@ -132,6 +133,15 @@ def run(cfg: Config, args) -> int:
             except Exception as e:
                 health["workable"] = {"ok": False, "count": 0, "error": str(e)[:160]}
                 log.error("workable source failed: %s", str(e)[:200])
+
+        if "standardchartered" in enabled:
+            try:
+                found = standardchartered.collect(cfg)
+                raw.extend(found)
+                health["standardchartered"] = {"ok": True, "count": len(found)}
+            except Exception as e:
+                health["standardchartered"] = {"ok": False, "count": 0, "error": str(e)[:160]}
+                log.error("standardchartered source failed: %s", str(e)[:200])
 
         if not raw:
             log.error("no listings collected from any source")

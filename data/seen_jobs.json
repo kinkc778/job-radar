@@ -7935,6 +7935,51 @@
    "location": "Hong Kong, Hong Kong, Hong Kong",
    "salary": "",
    "employment_type": "Full-time"
+  },
+  "standardchartered:1373029857": {
+   "first_seen": "2026-11-26T17:55:04+00:00",
+   "title": "Manager - Analytics and Data Science, GIAI (Kwun Tong, HK)",
+   "company": "Standard Chartered",
+   "url": "https://jobs.standardchartered.com/job/Kwun-Tong-Manager-Analytics-and-Data-Science%2C-GIAI/1373029857/",
+   "source": "standardchartered",
+   "xkey": "standard chartered|manager analytics and data science giai kwun tong hk",
+   "last_seen": "2026-11-26T17:55:04+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Hong Kong",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "standardchartered:1377545157": {
+   "first_seen": "2026-11-26T17:55:04+00:00",
+   "title": "Manager, WRB, HK Technology Management (Kwun Tong, HK)",
+   "company": "Standard Chartered",
+   "url": "https://jobs.standardchartered.com/job/Kwun-Tong-Manager%2C-WRB%2C-HK-Technology-Management/1377545157/",
+   "source": "standardchartered",
+   "xkey": "standard chartered|manager wrb hk technology management kwun tong hk",
+   "last_seen": "2026-11-26T17:55:04+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Hong Kong",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "standardchartered:1372432857": {
+   "first_seen": "2026-11-26T17:55:04+00:00",
+   "title": "Senior Manager - Analytics and Data Science, GIAI (Kwun Tong, HK)",
+   "company": "Standard Chartered",
+   "url": "https://jobs.standardchartered.com/job/Kwun-Tong-Senior-Manager-Analytics-and-Data-Science%2C-GIAI/1372432857/",
+   "source": "standardchartered",
+   "xkey": "standard chartered|senior manager analytics and data science giai kwun tong hk",
+   "last_seen": "2026-11-26T17:55:04+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Hong Kong",
+   "salary": "",
+   "employment_type": "Full-time"
   }
  },
  "runs": [
@@ -8183,6 +8228,22 @@
     "workable": {
      "ok": true,
      "count": 78
+    }
+   }
+  },
+  {
+   "at": "2026-11-26T17:55:04+00:00",
+   "scanned": 56,
+   "new": 56,
+   "candidates": 0,
+   "evaluated": 0,
+   "matched": 0,
+   "emailed": 0,
+   "elapsed": 46,
+   "sources": {
+    "standardchartered": {
+     "ok": true,
+     "count": 58
     }
    }
   }

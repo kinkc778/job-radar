@@ -18,6 +18,7 @@ query, filter and threshold lives in `config.json`.
    - **Workable global search** – HK-filtered, full JDs, many startup/grad roles
    - **eFinancialCareers HK** – embedded JSON feed; finance/tech roles
    - **JPMorgan Oracle HCM feed** – HK requisitions with responsibilities/qualifications
+   - **Standard Chartered RSS** – HK-filtered SuccessFactors feed
    - **ATS boards** – Greenhouse / Lever / Ashby boards of companies with HK offices
      (Binance, OKX, Bybit, Lalamove, Flexport, MongoDB by default)
    - **JobsDB HK** – Playwright + real Chrome; works locally, Cloudflare-blocked in the cloud
@@ -237,7 +238,7 @@ Everything is in `config.json`:
 | `title_include_regex` | must match to be considered |
 | `title_exclude_regex` | senior/lead/manager roles are dropped |
 | `blocked_title_regex` | sales, support, HR, property, etc. |
-| `sources` | turn any source on/off: `jobsdb`, `ctgoodjobs`, `ats`, `linkedin`, `workable`, `oracle`, `efinancialcareers` |
+| `sources` | turn any source on/off: `jobsdb`, `ctgoodjobs`, `ats`, `linkedin`, `workable`, `oracle`, `efinancialcareers`, `standardchartered` |
 | `linkedin.pages_per_query`, `efinancialcareers.pages_per_query` | result pages per search query |
 | `oracle.host`, `oracle.site`, `oracle.company` | Oracle HCM tenant (JPMorgan by default) |
 | `ats.greenhouse`, `ats.lever`, `ats.ashby` | board slugs to scan |
@@ -270,6 +271,22 @@ To start from scratch, reset that file to:
 | DeepSeek scoring | custom endpoint, no per-call cost |
 | Gmail SMTP | free |
 | Total | **free** (official DeepSeek API would be ~US$0.01-0.05/day) |
+
+Source status (verified from a GitHub runner):
+
+| Source | Cloud | Local |
+|---|---|---|
+| LinkedIn (guest) | ✓ | ✓ |
+| Workable (global HK search) | ✓ | ✓ |
+| eFinancialCareers HK | ✓ | ✓ |
+| JPMorgan Oracle feed | ✓ | ✓ |
+| Standard Chartered RSS | ✓ | ✓ |
+| ATS boards | ✓ | ✓ |
+| JobsDB | Cloudflare-blocked | ✓ |
+| CTgoodjobs | bot wall (405) | ✓ |
+
+The workflow sets `SKIP_SOURCES=jobsdb,ctgoodjobs` so cloud runs do not waste minutes
+retrying blocked sites; local runs still use them.
 
 Known limits:
 
@@ -309,6 +326,7 @@ jobscan/
     workable.py           global HK search + full JD
     efinancial.py         embedded JSON feed
     oracle.py             Oracle HCM feed (JPMorgan)
+    standardchartered.py  HK-filtered RSS feed
     ats.py                Greenhouse / Lever / Ashby
 docs/                     static job board (index.html, assets, generated data)
 data/seen_jobs.json       committed dedupe state
