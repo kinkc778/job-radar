@@ -84,6 +84,9 @@ class Config:
         self.smtp_pass = os.getenv("SMTP_PASS", "")
         self.email_from = os.getenv("EMAIL_FROM") or self.smtp_user
 
+        self.skip_sources = {
+            s.strip() for s in os.getenv("SKIP_SOURCES", "").split(",") if s.strip()
+        }
         self.headless = os.getenv("HEADLESS", "1") not in ("0", "false", "False")
         self.chrome_channel = os.getenv("CHROME_CHANNEL", "chrome")
         self.dry_run = os.getenv("DRY_RUN", "") in ("1", "true", "True")

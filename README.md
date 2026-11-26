@@ -15,6 +15,7 @@ query, filter and threshold lives in `config.json`.
 
 1. **Collects** live postings from:
    - **LinkedIn guest search** – HK jobs without login; works from cloud IPs
+   - **Workable global search** – HK-filtered, full JDs, many startup/grad roles
    - **eFinancialCareers HK** – embedded JSON feed; finance/tech roles
    - **JPMorgan Oracle HCM feed** – HK requisitions with responsibilities/qualifications
    - **ATS boards** – Greenhouse / Lever / Ashby boards of companies with HK offices
@@ -236,7 +237,7 @@ Everything is in `config.json`:
 | `title_include_regex` | must match to be considered |
 | `title_exclude_regex` | senior/lead/manager roles are dropped |
 | `blocked_title_regex` | sales, support, HR, property, etc. |
-| `sources` | turn any source on/off: `jobsdb`, `ctgoodjobs`, `ats`, `linkedin`, `oracle`, `efinancialcareers` |
+| `sources` | turn any source on/off: `jobsdb`, `ctgoodjobs`, `ats`, `linkedin`, `workable`, `oracle`, `efinancialcareers` |
 | `linkedin.pages_per_query`, `efinancialcareers.pages_per_query` | result pages per search query |
 | `oracle.host`, `oracle.site`, `oracle.company` | Oracle HCM tenant (JPMorgan by default) |
 | `ats.greenhouse`, `ats.lever`, `ats.ashby` | board slugs to scan |
@@ -305,6 +306,7 @@ jobscan/
     jobsdb.py             Playwright search + JD detail
     ctgoodjobs.py         JSON-LD search + JobPosting detail
     linkedin.py           guest search + JD detail
+    workable.py           global HK search + full JD
     efinancial.py         embedded JSON feed
     oracle.py             Oracle HCM feed (JPMorgan)
     ats.py                Greenhouse / Lever / Ashby

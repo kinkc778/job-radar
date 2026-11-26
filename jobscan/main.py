@@ -10,7 +10,7 @@ from .config import Config
 from .models import Job
 from .prefilter import dedupe_enriched, dedupe_jobs, quick_score, title_relevant
 from .scoring import Scorer
-from .sources import ats, ctgoodjobs, efinancial, jobsdb, linkedin, oracle
+from .sources import ats, ctgoodjobs, efinancial, jobsdb, linkedin, oracle, workable
 from .state import State
 from .util import hk_now, iso_now
 
@@ -39,6 +39,11 @@ def run(cfg: Config, args) -> int:
         wanted = {s.strip() for s in args.sources.split(",") if s.strip()}
         cfg.sources = {k: (k in wanted) for k in cfg.sources}
         enabled = cfg.enabled_sources()
+    if cfg.skip_sources:
+        skipped = [s for s in enabled if s in cfg.skip_sources]
+        enabled = [s for s in enabled if s not in cfg.skip_sources]
+        if skipped:
+            log.info("skipping known-blocked sources: %s", ", ".join(skipped))
     log.info("sources enabled: %s", ", ".join(enabled) or "none")
     if not enabled:
         log.error("no sources enabled")
@@ -118,6 +123,15 @@ def run(cfg: Config, args) -> int:
             except Exception as e:
                 health["efinancialcareers"] = {"ok": False, "count": 0, "error": str(e)[:160]}
                 log.error("efinancialcareers source failed: %s", str(e)[:200])
+
+        if "workable" in enabled:
+            try:
+                found = workable.collect(cfg.queries)
+                raw.extend(found)
+                health["workable"] = {"ok": True, "count": len(found)}
+            except Exception as e:
+                health["workable"] = {"ok": False, "count": 0, "error": str(e)[:160]}
+                log.error("workable source failed: %s", str(e)[:200])
 
         if not raw:
             log.error("no listings collected from any source")
