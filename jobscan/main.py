@@ -220,7 +220,8 @@ def run(cfg: Config, args) -> int:
     report_path.write_text(html_body, encoding="utf-8")
     log.info("report written: %s", report_path)
 
-    heartbeat = cfg.send_empty_report and run_dt.hour == cfg.send_empty_hour
+    heartbeat = (cfg.send_empty_report
+                 and cfg.send_empty_hour <= run_dt.hour < cfg.send_empty_hour + 2)
     should_send = (not cfg.dry_run and not args.no_email and (top or heartbeat))
     sent = False
     if should_send:
