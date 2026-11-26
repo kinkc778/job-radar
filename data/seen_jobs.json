@@ -2855,6 +2855,30 @@
      "count": 332
     }
    }
+  },
+  {
+   "at": "2026-11-26T15:33:01+00:00",
+   "scanned": 324,
+   "new": 255,
+   "candidates": 0,
+   "evaluated": 0,
+   "matched": 0,
+   "emailed": 0,
+   "elapsed": 167,
+   "sources": {
+    "jobsdb": {
+     "ok": false,
+     "count": 0
+    },
+    "ctgoodjobs": {
+     "ok": false,
+     "count": 0
+    },
+    "ats": {
+     "ok": true,
+     "count": 332
+    }
+   }
   }
  ]
 }
