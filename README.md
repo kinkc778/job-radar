@@ -22,7 +22,7 @@ query, filter and threshold lives in `config.json`.
    agent / solution roles, drops senior, manager, sales and non-technical noise.
 3. **Scores** each JD 0-100 against the CV with `DeepSeek-V4.1-Flash-1017`, returning a role family,
    a 2-3 sentence summary, up to 3 "why it fits" bullets and up to 2 gaps.
-4. **Emails** one HTML digest at 07:00 HKT with:
+4. **Emails** an HTML digest (heartbeat at 07:00 HKT, plus any run that finds new roles) with:
    - job title + company + location + salary
    - match score, role family, employment type
    - JD snapshot, why it fits, what's missing
@@ -33,7 +33,7 @@ query, filter and threshold lives in `config.json`.
    High scorers that missed the email cap are re-surfaced in later digests.
 
 ```
-GitHub Actions (cron 23:00 UTC = 07:00 HKT)
+GitHub Actions (every 6 hours)
               │
       python -m jobscan
               │
@@ -197,19 +197,19 @@ Tick `dry_run` for the first run. The HTML report is downloadable from the run's
 
 ### 3.4 Schedule
 
-The workflow runs daily at `23:00 UTC` = **07:00 Hong Kong time**, and commits its state
-back to the repo after each run.
-
-To change the time, edit `.github/workflows/scan.yml`:
+The workflow runs **every 6 hours** — 07:07, 13:07, 19:07 and 01:07 Hong Kong time —
+and commits its state back to the repo after each run.
 
 ```yaml
 on:
   schedule:
-    - cron: "0 23 * * *"   # UTC. 23:00 UTC = 07:00 HKT
+    - cron: "7 23,5,11,17 * * *"   # UTC; +8h = 07:07/13:07/19:07/01:07 HKT
 ```
 
-Add a second cron line (e.g. `0 10 * * *` = 18:00 HKT) if you want an evening scan too.
-The dedupe state means you will not see the same job twice.
+Only the 07:xx run sends an email when there are no new matches (the daily heartbeat);
+the other runs email only when they find something. `send_empty_hour_hkt` in
+`config.json` controls which hour sends the heartbeat. The dedupe state means you will
+not see the same job twice.
 
 > GitHub disables scheduled workflows after 60 days of repository inactivity.
 > This workflow commits after every run, which counts as activity, so it stays enabled.
@@ -303,7 +303,7 @@ docs/                     static job board (index.html, assets, generated data)
 data/seen_jobs.json       committed dedupe state
 data/board_jobs.json      cumulative board archive
 reports/                  local HTML reports (git-ignored, uploaded as CI artifacts)
-.github/workflows/scan.yml  daily cron
+.github/workflows/scan.yml  6-hourly cron
 .env.example              local credentials template
 ```
 

@@ -35,6 +35,7 @@ class Config:
         self.backfill_days = int(self.raw.get("backfill_days", 7))
         self.backfill_max = int(self.raw.get("backfill_max", 5))
         self.send_empty_report = bool(self.raw.get("send_empty_report", True))
+        self.send_empty_hour = int(self.raw.get("send_empty_hour_hkt", 7))
         self.include_internships = bool(self.raw.get("include_internships", True))
         self.board_min_score = int(self.raw.get("board_min_score", 60))
         self.board_keep_days = int(self.raw.get("board_keep_days", 180))

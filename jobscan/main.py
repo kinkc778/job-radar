@@ -220,8 +220,8 @@ def run(cfg: Config, args) -> int:
     report_path.write_text(html_body, encoding="utf-8")
     log.info("report written: %s", report_path)
 
-    should_send = (not cfg.dry_run and not args.no_email
-                   and (top or cfg.send_empty_report))
+    heartbeat = cfg.send_empty_report and run_dt.hour == cfg.send_empty_hour
+    should_send = (not cfg.dry_run and not args.no_email and (top or heartbeat))
     sent = False
     if should_send:
         sent = mailer.send(cfg, subject, html_body, text_body)

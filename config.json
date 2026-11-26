@@ -6,6 +6,7 @@
   "backfill_days": 7,
   "backfill_max": 5,
   "send_empty_report": true,
+  "send_empty_hour_hkt": 7,
   "include_internships": false,
   "board_min_score": 50,
   "board_keep_days": 180,
