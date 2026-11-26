@@ -6495,6 +6495,36 @@
    "location": "Hong Kong",
    "salary": "HK$40k - HK$60k",
    "employment_type": "Full-time"
+  },
+  "linkedin:4493721699": {
+   "first_seen": "2026-11-26T17:38:55+00:00",
+   "title": "Logistics Platform Solutions Specialist",
+   "company": "JD.COM",
+   "url": "https://www.linkedin.com/jobs/view/4493721699",
+   "source": "linkedin",
+   "xkey": "jd com|logistics platform solutions specialist",
+   "last_seen": "2026-11-26T17:38:55+00:00",
+   "status": "low_score",
+   "score": 15,
+   "role_family": "Other",
+   "location": "Hong Kong, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Contract"
+  },
+  "linkedin:4492670558": {
+   "first_seen": "2026-11-26T17:38:55+00:00",
+   "title": "Business Solutions Executive",
+   "company": "DKSH",
+   "url": "https://www.linkedin.com/jobs/view/4492670558",
+   "source": "linkedin",
+   "xkey": "dksh|business solutions executive",
+   "last_seen": "2026-11-26T17:38:55+00:00",
+   "status": "low_score",
+   "score": 48,
+   "role_family": "Data Analytics / BI",
+   "location": "Wong Chuk Hang, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
   }
  },
  "runs": [
@@ -6676,6 +6706,42 @@
    "emailed": 0,
    "elapsed": 76,
    "sources": {
+    "efinancialcareers": {
+     "ok": true,
+     "count": 95
+    }
+   }
+  },
+  {
+   "at": "2026-11-26T17:38:55+00:00",
+   "scanned": 629,
+   "new": 407,
+   "candidates": 2,
+   "evaluated": 2,
+   "matched": 0,
+   "emailed": 0,
+   "elapsed": 317,
+   "sources": {
+    "jobsdb": {
+     "ok": false,
+     "count": 0
+    },
+    "ctgoodjobs": {
+     "ok": false,
+     "count": 0
+    },
+    "ats": {
+     "ok": true,
+     "count": 328
+    },
+    "linkedin": {
+     "ok": true,
+     "count": 165
+    },
+    "oracle": {
+     "ok": true,
+     "count": 60
+    },
     "efinancialcareers": {
      "ok": true,
      "count": 95
