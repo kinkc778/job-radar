@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
+.env
+cv_profile.json
+reports/
+*.pdf
+data/*.tmp
+data/*.log
+.pytest_cache/

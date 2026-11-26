@@ -1,0 +1,57 @@
+{
+  "timezone_offset_hours": 8,
+  "min_score": 65,
+  "max_jobs_in_email": 20,
+  "max_detail_fetches": 60,
+  "backfill_days": 7,
+  "backfill_max": 5,
+  "send_empty_report": true,
+  "include_internships": false,
+  "board_min_score": 60,
+  "board_keep_days": 180,
+  "board_max_jobs": 600,
+  "board_include_analysis": false,
+  "scoring": {
+    "model": "DeepSeek-V4.1-Flash-1017",
+    "reasoning_effort": "max",
+    "json_mode": true,
+    "timeout_seconds": 90,
+    "max_output_tokens": 2048
+  },
+  "queries": [
+    "data engineer",
+    "analytics engineer",
+    "data scientist",
+    "data analyst",
+    "machine learning engineer",
+    "AI engineer",
+    "AI agent developer",
+    "solution engineer",
+    "business intelligence analyst",
+    "graduate programme data",
+    "data analytics graduate",
+    "data intern",
+    "technology graduate"
+  ],
+  "sources": {
+    "jobsdb": true,
+    "ctgoodjobs": true,
+    "ats": true
+  },
+  "jobsdb": {
+    "pages_per_query": 1,
+    "daterange_days": 14
+  },
+  "ctgoodjobs": {
+    "pages_per_query": 1
+  },
+  "ats": {
+    "greenhouse": ["binance", "okx", "bybit", "flexport", "mongodb"],
+    "lever": ["lalamove", "binance"],
+    "ashby": []
+  },
+  "title_include_regex": "(?i)(data|analytic|machine learning|\\bml\\b|\\bai\\b|genai|artificial intelligence|\\bllm\\b|\\bagents?\\b|solution|business intelligence|\\bbi\\b|\\betl\\b|mlops|\\bnlp\\b|computer vision|scientist|insight|python|big data|data platform|analytics|forward deployed|technology|digital)",
+  "title_exclude_regex": "(?i)(\\bsenior\\b|\\bsr\\.?\\b|\\blead\\b|\\bprincipal\\b|\\bstaff\\b|\\bhead\\b|\\bdirector\\b|\\bmanager\\b|\\bvp\\b|vice president|\\bchief\\b|\\barchitect\\b|\\bexpert\\b|\\bphd\\b|professor|lecturer|\\bexperienced\\b|supervisor)",
+  "blocked_title_regex": "(?i)(sales|pre-sales|presales|insurance agent|real estate|property agent|estate agent|relationship manager|customer service|telesales|recruit|human resources|\\bhr\\b|accountant|auditor|payroll|marketing executive|clerk|driver|technician|nurse|teacher|business development|account executive|data center|infrastructure|network|hardware|\\bsupport\\b|\\bofficer\\b)",
+  "location_regex": "(?i)(hong kong|hong kong sar|hksar|\\bhk\\b)"
+}

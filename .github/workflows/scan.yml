@@ -1,0 +1,86 @@
+name: Daily HK job scan
+
+on:
+  schedule:
+    # 23:00 UTC = 07:00 Hong Kong time
+    - cron: "0 23 * * *"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Scan and build the report without sending email"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: job-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+          # real Chrome is harder to fingerprint than bundled Chromium; best effort
+          python -m playwright install --with-deps chrome || true
+
+      - name: Materialise CV profile
+        env:
+          CV_PROFILE_B64: ${{ secrets.CV_PROFILE_B64 }}
+        run: |
+          if [ -n "$CV_PROFILE_B64" ]; then
+            echo "$CV_PROFILE_B64" | base64 -d > cv_profile.json
+          fi
+          test -f cv_profile.json || { echo "cv_profile.json missing: add the CV_PROFILE_B64 secret"; exit 1; }
+
+      - name: Run scanner
+        env:
+          LLM_BASE_URL: ${{ secrets.LLM_BASE_URL }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          CHROME_CHANNEL: chrome
+          DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && '1' || '' }}
+        run: |
+          if command -v xvfb-run >/dev/null 2>&1; then
+            HEADLESS=0 xvfb-run -a --server-args="-screen 0 1366x900x24" python -m jobscan
+          else
+            HEADLESS=1 python -m jobscan
+          fi
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: job-report-${{ github.run_id }}
+          path: reports/
+          retention-days: 14
+          if-no-files-found: ignore
+
+      - name: Commit scan state
+        if: always()
+        run: |
+          git config user.name "job-scan-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/seen_jobs.json data/board_jobs.json docs/data/jobs.js
+          if git diff --cached --quiet; then
+            echo "no state change"
+          else
+            git commit -m "chore: update job scan state [skip ci]"
+            git push
+          fi
