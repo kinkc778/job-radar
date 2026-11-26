@@ -89,9 +89,10 @@
     }
     if (isApplied) tags.push('<span class="tag applied">Applied</span>');
 
+    const postedWhen = j.posted_at || j.posted || '';
     const meta = [
       j.salary ? `<em>${esc(j.salary)}</em>` : '',
-      j.posted ? `<em>${esc(fmtDate(j.posted))}</em>` : '',
+      postedWhen ? `<em>Posted ${esc(fmtDate(postedWhen))}</em>` : '',
     ].filter(Boolean).join(' &nbsp;·&nbsp; ');
 
     const sub = [j.company ? `<b>${esc(j.company)}</b>` : '', j.location ? esc(j.location) : '']
@@ -175,7 +176,8 @@
 
   function sortJobs(a, b) {
     if (state.sort === 'newest') {
-      return String(b.first_seen || '').localeCompare(String(a.first_seen || ''));
+      return String(b.posted_at || b.first_seen || '')
+        .localeCompare(String(a.posted_at || a.first_seen || ''));
     }
     if (state.sort === 'company') {
       return String(a.company || '').localeCompare(String(b.company || ''));

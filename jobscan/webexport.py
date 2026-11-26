@@ -8,11 +8,12 @@ the page loads as a normal script so it works from file:// and from Pages.
 import json
 import logging
 import os
-from datetime import timedelta
+import re
+from datetime import datetime, timedelta, timezone
 
 from .config import Config
 from .models import Job
-from .util import hk_now, iso_now, parse_iso, truncate
+from .util import hk_now, iso_now, parse_iso, relative_to_date, truncate
 
 log = logging.getLogger("jobscan")
 
@@ -50,6 +51,26 @@ def _sanitize(cfg: Config, data: dict):
     for entry in data["jobs"].values():
         for field in ANALYSIS_FIELDS:
             entry.pop(field, None)
+
+
+def _backfill_dates(data: dict):
+    """Fill posted_at for older entries that only have relative text or epoch ms."""
+    for entry in data["jobs"].values():
+        if entry.get("posted_at") or not entry.get("posted"):
+            continue
+        raw = str(entry["posted"]).strip()
+        if re.fullmatch(r"\d{10,13}", raw):
+            ms = int(raw)
+            if len(raw) == 10:
+                ms *= 1000
+            try:
+                entry["posted_at"] = datetime.fromtimestamp(
+                    ms / 1000, tz=timezone.utc
+                ).strftime("%Y-%m-%d")
+                continue
+            except (ValueError, OSError):
+                pass
+        entry["posted_at"] = relative_to_date(raw)
 
 
 def _prune(cfg: Config, data: dict):
@@ -92,6 +113,7 @@ def update_archive(cfg: Config, jobs: list[Job]) -> tuple[dict, int, int]:
         else:
             added += 1
     _sanitize(cfg, data)
+    _backfill_dates(data)
     _prune(cfg, data)
     _save(cfg, data)
     return data, added, updated
@@ -130,5 +152,6 @@ def write_site(cfg: Config, data: dict | None = None) -> int:
 def export_only(cfg: Config) -> int:
     data = load_archive(cfg)
     _sanitize(cfg, data)
+    _backfill_dates(data)
     _save(cfg, data)
     return write_site(cfg, data)

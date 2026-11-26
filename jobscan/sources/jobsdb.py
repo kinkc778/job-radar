@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 from ..browser import BrowserSession
 from ..models import Job
-from ..util import clean, employment_type
+from ..util import clean, employment_type, relative_to_date
 
 log = logging.getLogger("jobscan")
 
@@ -86,6 +86,7 @@ def collect(session: BrowserSession, queries: list[str], pages: int = 1,
                     location=location,
                     salary=salary,
                     posted=posted,
+                    posted_at=relative_to_date(posted),
                     employment_type=employment_type(title, teaser),
                     classification=classification,
                     extra={"teaser": teaser, "query": q},

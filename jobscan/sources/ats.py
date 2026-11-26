@@ -1,5 +1,6 @@
 import logging
 import time
+from datetime import datetime, timezone
 
 from ..config import Config
 from ..httpclient import get_json
@@ -42,6 +43,7 @@ def _greenhouse(slug: str, cfg: Config) -> list[Job]:
             url=j.get("absolute_url", ""),
             location=loc,
             posted=clean(str(j.get("updated_at") or ""))[:10],
+            posted_at=clean(str(j.get("updated_at") or ""))[:10],
             employment_type=employment_type(title),
             extra={"board": slug, "gh_id": j.get("id")},
         ))
@@ -62,6 +64,10 @@ def _lever(slug: str, cfg: Config) -> list[Job]:
             parts.append(f"\n{lst.get('text', '')}\n")
             parts.append(html_to_text(lst.get("content", "")))
         jd = "\n".join(x for x in parts if x).strip()
+        created = p.get("createdAt")
+        posted = ""
+        if isinstance(created, (int, float)):
+            posted = datetime.fromtimestamp(created / 1000, tz=timezone.utc).strftime("%Y-%m-%d")
         out.append(Job(
             source="lever",
             external_id=f"{slug}:{p.get('id')}",
@@ -70,7 +76,8 @@ def _lever(slug: str, cfg: Config) -> list[Job]:
             url=p.get("hostedUrl", ""),
             location=loc,
             jd=jd,
-            posted=clean(str(p.get("createdAt") or ""))[:13],
+            posted=posted,
+            posted_at=posted,
             employment_type=employment_type(title, cats.get("commitment", "") or ""),
             classification=clean(cats.get("team", "")),
             extra={"board": slug, "commitment": cats.get("commitment", "")},
@@ -100,6 +107,7 @@ def _ashby(slug: str, cfg: Config) -> list[Job]:
             location=loc,
             jd=jd,
             posted=clean(str(j.get("publishedAt") or ""))[:10],
+            posted_at=clean(str(j.get("publishedAt") or ""))[:10],
             employment_type=employment_type(title, j.get("employmentType") or ""),
             classification=clean(j.get("department") or ""),
             extra={"board": slug},

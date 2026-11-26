@@ -24,9 +24,10 @@ def _ld_blocks(html: str):
             continue
 
 
-def collect(queries: list[str], pages: int = 1) -> list[Job]:
+def collect(queries: list[str], pages: int = 1, session=None) -> list[Job]:
     jobs: dict[str, Job] = {}
     failures = 0
+    consecutive = 0
 
     for q in queries:
         for page in range(1, pages + 1):
@@ -34,10 +35,20 @@ def collect(queries: list[str], pages: int = 1) -> list[Job]:
             if page > 1:
                 url += f"&page={page}"
             try:
-                html = get_text(url, timeout=30)
+                if session is not None:
+                    html = session.goto(url, wait_selector='a[href*="/job/"]', retries=1)
+                    session.polite_pause(0.8, 1.8)
+                else:
+                    html = get_text(url, timeout=30)
+                    time.sleep(0.4)
+                consecutive = 0
             except Exception as e:
                 failures += 1
+                consecutive += 1
                 log.warning("ctgoodjobs: search '%s' failed: %s", q, str(e)[:120])
+                if consecutive >= 3:
+                    log.error("ctgoodjobs: 3 consecutive failures - stopping this source")
+                    raise RuntimeError("ctgoodjobs blocked / unavailable") from e
                 continue
 
             found = 0
@@ -64,18 +75,23 @@ def collect(queries: list[str], pages: int = 1) -> list[Job]:
                     )
                     found += 1
             log.info("ctgoodjobs: '%s' p%d -> %d cards", q, page, found)
-            time.sleep(0.4)
 
     if failures and not jobs:
         raise RuntimeError(f"ctgoodjobs: all {failures} searches failed")
     return list(jobs.values())
 
 
-def enrich(jobs: list[Job], limit: int = 30) -> int:
+def enrich(jobs: list[Job], limit: int = 30, session=None) -> int:
     done = 0
     for job in jobs[:limit]:
         try:
-            html = get_text(job.url, timeout=30)
+            if session is not None:
+                html = session.goto(job.url,
+                                    wait_selector='script[type="application/ld+json"]',
+                                    retries=1)
+                session.polite_pause(0.7, 1.5)
+            else:
+                html = get_text(job.url, timeout=30)
         except Exception as e:
             log.warning("ctgoodjobs: detail failed for %s: %s", job.external_id, str(e)[:100])
             continue
@@ -122,9 +138,11 @@ def enrich(jobs: list[Job], limit: int = 30) -> int:
             job.salary = ""
 
         job.posted = clean(str(posting.get("datePosted") or ""))[:10]
+        job.posted_at = job.posted
         valid = posting.get("validThrough")
         if valid and "-" in str(valid):
             job.extra["valid_through"] = str(valid)[:10]
         done += 1
-        time.sleep(0.3)
+        if session is None:
+            time.sleep(0.3)
     return done

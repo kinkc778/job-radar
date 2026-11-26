@@ -18,6 +18,8 @@ BLOCK_MARKERS = (
     "cf-browser-verification",
     "challenge-platform",
     "Enable JavaScript and cookies to continue",
+    "confirm you are human",
+    "Verify you are human",
 )
 
 STEALTH_JS = """
@@ -88,7 +90,8 @@ class BrowserSession:
             try:
                 self.page.goto(url, wait_until="domcontentloaded", timeout=30000)
                 if wait_selector:
-                    self.page.wait_for_selector(wait_selector, timeout=15000)
+                    # "attached" works for both visible cards and hidden JSON-LD scripts
+                    self.page.wait_for_selector(wait_selector, timeout=15000, state="attached")
                 time.sleep(0.6 + random.random() * 0.8)
                 html = self.page.content()
                 if self._is_blocked(html):

@@ -15,6 +15,7 @@ class Job:
     salary: str = ""
     jd: str = ""
     posted: str = ""
+    posted_at: str = ""
     employment_type: str = ""
     classification: str = ""
     extra: Dict[str, Any] = field(default_factory=dict)
@@ -53,6 +54,7 @@ class Job:
             "location": self.location,
             "salary": self.salary,
             "posted": self.posted,
+            "posted_at": self.posted_at,
             "employment_type": self.employment_type,
             "score": self.score,
             "verdict": self.verdict,

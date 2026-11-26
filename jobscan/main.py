@@ -68,7 +68,9 @@ def run(cfg: Config, args) -> int:
         if "ctgoodjobs" in enabled:
             try:
                 found = ctgoodjobs.collect(
-                    cfg.queries, pages=int(cfg.ctgoodjobs.get("pages_per_query", 1))
+                    cfg.queries,
+                    pages=int(cfg.ctgoodjobs.get("pages_per_query", 1)),
+                    session=session,
                 )
                 raw.extend(found)
                 health["ctgoodjobs"] = {"ok": True, "count": len(found)}
@@ -141,7 +143,8 @@ def run(cfg: Config, args) -> int:
             n = jobsdb.enrich(session, queues["jobsdb"], len(queues["jobsdb"]))
             log.info("jobsdb: fetched %d/%d JDs", n, len(queues["jobsdb"]))
         if queues["ctgoodjobs"]:
-            n = ctgoodjobs.enrich(queues["ctgoodjobs"], len(queues["ctgoodjobs"]))
+            n = ctgoodjobs.enrich(queues["ctgoodjobs"], len(queues["ctgoodjobs"]),
+                                  session=session)
             log.info("ctgoodjobs: fetched %d/%d JDs", n, len(queues["ctgoodjobs"]))
         if queues["greenhouse"]:
             n = ats.enrich(queues["greenhouse"], len(queues["greenhouse"]))

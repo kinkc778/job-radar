@@ -224,7 +224,7 @@ Everything is in `config.json`:
 | Key | What it does |
 |---|---|
 | `queries` | JobsDB / CTgoodjobs search keywords |
-| `min_score` | only email jobs at or above this score (default 65) |
+| `min_score` | only email jobs at or above this score (default 55) |
 | `include_internships` | `false` excludes internships/placements (default); `--include-interns` overrides for one run |
 | `scoring.*` | LLM base URL, model, reasoning effort, timeout, output cap |
 | `max_jobs_in_email` | cap per digest (default 20) |
@@ -235,7 +235,7 @@ Everything is in `config.json`:
 | `blocked_title_regex` | sales, support, HR, property, etc. |
 | `sources` | turn JobsDB / CTgoodjobs / ATS on or off |
 | `ats.greenhouse`, `ats.lever`, `ats.ashby` | board slugs to scan |
-| `board_min_score` | lowest score that appears on the web board (default 60) |
+| `board_min_score` | lowest score that appears on the web board (default 50) |
 | `board_include_analysis` | include CV-derived why/gaps on the board; keep `false` for a public site |
 | `board_keep_days`, `board_max_jobs` | board archive retention |
 

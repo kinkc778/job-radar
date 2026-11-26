@@ -65,22 +65,72 @@ def parse_iso(s: str):
         return None
 
 
+_WORD_NUM = {
+    "a": 1, "an": 1, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
+    "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+    "twelve": 12,
+}
+
+_UNIT_DAYS = {
+    "minute": 0, "min": 0, "m": 0,
+    "hour": 0, "hr": 0, "h": 0,
+    "day": 1, "d": 1,
+    "week": 7, "wk": 7, "w": 7,
+    "month": 30, "mo": 30,
+    "year": 365, "yr": 365, "y": 365,
+}
+
+
 def relative_age_days(text: str):
-    """Best-effort parse of JobsDB-style 'Listed 3d ago' text."""
-    t = (text or "").lower()
-    m = re.search(r"(\d+)\s*(minute|hour|day|week|month)", t)
-    if not m:
-        if "just" in t or "today" in t:
-            return 0
+    """Best-effort parse of board text like 'Listed 3d ago' or 'two hours ago'."""
+    t = (text or "").lower().strip()
+    if not t:
         return None
-    n, unit = int(m.group(1)), m.group(2)
-    return {
-        "minute": 0,
-        "hour": 0,
-        "day": n,
-        "week": n * 7,
-        "month": n * 30,
-    }[unit]
+    if re.search(r"\b(just|today|new)\b", t):
+        return 0
+    if "yesterday" in t:
+        return 1
+
+    m = re.search(
+        r"\b(\d+)\s*\+?\s*(minutes?|mins?|hours?|hrs?|days?|weeks?|wks?|months?|mos?"
+        r"|years?|yrs?|m|h|d|w|y)\b",
+        t,
+    )
+    if m:
+        n = int(m.group(1))
+        unit = m.group(2).rstrip("s")
+        if unit in ("minute", "min"):
+            return 0
+        if unit in ("hour", "hr"):
+            return 0
+        if unit == "day":
+            return n
+        if unit in ("week", "wk"):
+            return n * 7
+        if unit == "month":
+            return n * 30
+        if unit in ("year", "yr"):
+            return n * 365
+        return n * _UNIT_DAYS.get(unit, 1)
+
+    m = re.search(
+        r"\b(a|an|one|two|three|four|five|six|seven|eight|nine|ten|eleven|twelve)"
+        r"\s+(minute|hour|day|week|month|year)s?\b",
+        t,
+    )
+    if m:
+        n = _WORD_NUM[m.group(1)]
+        return n * _UNIT_DAYS[m.group(2)]
+
+    return None
+
+
+def relative_to_date(text: str) -> str:
+    """'Listed 3d ago' -> '2026-11-23' (HKT). Empty when unparseable."""
+    days = relative_age_days(text)
+    if days is None:
+        return ""
+    return (hk_now() - timedelta(days=days)).strftime("%Y-%m-%d")
 
 
 def employment_type(title: str, text: str = "") -> str:
