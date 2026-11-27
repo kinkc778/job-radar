@@ -9065,6 +9065,36 @@
    "location": "Hong Kong; India; Malaysia; Taiwan; United Arab Emirates",
    "salary": "",
    "employment_type": "Full-time"
+  },
+  "linkedin:4484911761": {
+   "first_seen": "2026-11-27T01:04:21+00:00",
+   "title": "Digital Executive (open to 2025 / 2026 graduates)",
+   "company": "Publicis Groupe Hong Kong",
+   "url": "https://www.linkedin.com/jobs/view/4484911761",
+   "source": "linkedin",
+   "xkey": "publicis groupe hong kong|digital executive open to 2025 2026 graduates",
+   "last_seen": "2026-11-27T01:04:21+00:00",
+   "status": "low_score",
+   "score": 18,
+   "role_family": "Other",
+   "location": "Hong Kong, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "efinancialcareers:OnFNvBwNsZa9Do9v": {
+   "first_seen": "2026-11-27T01:04:21+00:00",
+   "title": "Python Trading Developer - Delta One Trading",
+   "company": "Gravitas Recruitment Group",
+   "url": "https://www.efinancialcareers.hk/jobs-Hong_Kong-Hong_Kong-Python_Trading_Developer_-_Delta_One_Trading.id24760363",
+   "source": "efinancialcareers",
+   "xkey": "gravitas recruitment group|python trading developer delta one trading",
+   "last_seen": "2026-11-27T01:04:21+00:00",
+   "status": "low_score",
+   "score": 36,
+   "role_family": "Other",
+   "location": "Hong Kong",
+   "salary": "",
+   "employment_type": "Full-time"
   }
  },
  "runs": [
@@ -9365,6 +9395,42 @@
     "standardchartered": {
      "ok": true,
      "count": 58
+    }
+   }
+  },
+  {
+   "at": "2026-11-27T01:04:21+00:00",
+   "scanned": 973,
+   "new": 585,
+   "candidates": 2,
+   "evaluated": 2,
+   "matched": 0,
+   "emailed": 0,
+   "elapsed": 231,
+   "sources": {
+    "ats": {
+     "ok": true,
+     "count": 328
+    },
+    "linkedin": {
+     "ok": true,
+     "count": 313
+    },
+    "oracle": {
+     "ok": true,
+     "count": 60
+    },
+    "efinancialcareers": {
+     "ok": true,
+     "count": 166
+    },
+    "workable": {
+     "ok": true,
+     "count": 78
+    },
+    "standardchartered": {
+     "ok": true,
+     "count": 60
     }
    }
   }
