@@ -2478,6 +2478,48 @@
    "jd": "The Live Trading, Analysis & Tooling engineering team exists to make sure our traders and researchers have all the tools they need to run and analyse their trading at scale. We tackle both ends of scaling - we help traders maximise how many strategies they can trade, and help them analyse specific moments to find new opportunities. Our team sits close to the people who use what we build, with short iteration loops, fast feedback, and a lot of conversation. The work is broad. We build tools that help traders orchestrate strategies across our full product range. We build infrastructure that makes large amounts of data quickly explorable. We model risk, analyse trades, and figure out where new opportunities might be. Our toolkit is just as broad. Python, Java, React, SQL, any tool that solves the issue at hand. About You You're energised by problems where the brief doesn't exist yet. Working out what to build is as much the job as building it You can move between languages without it slowing you down. The right tool matters more to you than your favourite one You like working with stakeholders across the business and you're good at figuring out what someone actually needs, not just what they asked for You can pivot. You enjoy trying out new ideas quickly and scaling them once they’ve proven value - or throwing them out if they didn’t work What You Don't Need A finance background. Experience in any particular language. A specific set of years in any particular role. We hire ...",
    "first_seen": "2026-11-27T14:59:18+00:00",
    "last_seen": "2026-11-27T14:59:18+00:00"
+  },
+  "linkedin:4443814137": {
+   "source": "linkedin",
+   "external_id": "4443814137",
+   "title": "AI Engineer | Insurance",
+   "company": "Capco",
+   "url": "https://www.linkedin.com/jobs/view/4443814137",
+   "location": "Hong Kong SAR",
+   "salary": "",
+   "posted": "2026-11-28",
+   "posted_at": "2026-11-28",
+   "employment_type": "Full-time",
+   "score": 55,
+   "verdict": "Strong skills, but experience bar too high",
+   "role_family": "AI / ML Engineering",
+   "summary": "A Capco consulting role building AI solutions for insurance clients: multi-agent workflows, Python data/model pipelines, fine-tuning LLMs for risk assessment and customer query handling, plus deployment, monitoring and compliance work inside agile client teams. Day to day is a mix of hands-on LLM/RAG/agent engineering and stakeholder-facing delivery, so it blends software engineering with consulting. The tech stack lines up well with the candidate's background, but the ad explicitly asks for 3–12 years of professional AI/ML engineering experience.",
+   "priority": "low",
+   "key": "linkedin:4443814137",
+   "jd": "Capco Capco is a leading global technology and management consultancy that excels in driving digital transformation within the financial services and insurance sectors. With an unwavering commitment to delivering practical solutions, we empower our clients to navigate the complexities of today's fast-paced market. Our integrated services span across major financial hubs worldwide, ensuring that we are always close to our clients and their needs. At Capco, we possess not only the expertise but also the vision and passion necessary to lead transformative change. As we embark on an exciting growth journey, this is the perfect moment to join our team. We are expanding geographically, increasing our workforce, and poised to disrupt the consulting landscape across APAC with our entrepreneurial spirit and agile methodologies. About The Role We are thrilled to introduce an opportunity for a talented AI Engineer to join our Hong Kong team. This role is designed for a technology innovator who thrives on solving complex challenges and is passionate about building AI-driven solutions that transform the Financial Services industry. As an AI Engineer at Capco, you will play a pivotal role in shaping the future of insurance by leveraging cutting-edge AI technologies to deliver intelligent, scalable, and compliant solutions. Your work will enable our clients to unlock new efficiencies, enhance customer experience, and stay ahead in a rapidly evolving digital landscape. If you are excited ...",
+   "first_seen": "2026-11-28T14:07:32+00:00",
+   "last_seen": "2026-11-28T14:07:32+00:00"
+  },
+  "linkedin:4479123840": {
+   "source": "linkedin",
+   "external_id": "4479123840",
+   "title": "Trading AI Developer",
+   "company": "UBS",
+   "url": "https://www.linkedin.com/jobs/view/4479123840",
+   "location": "Hong Kong, Hong Kong SAR",
+   "salary": "",
+   "posted": "2026-11-28",
+   "posted_at": "2026-11-28",
+   "employment_type": "Full-time",
+   "score": 50,
+   "verdict": "Adjacent stretch",
+   "role_family": "AI / ML Engineering",
+   "summary": "A front-office Quantitative Analytics role on the Global Markets trading desk, building AI-powered systems, quantitative models and analytics on UBS's proprietary cloud quant platform (ACQA) alongside Trading, Structuring, Sales, Quant and IT. Day to day is production Python engineering plus model/analytics development in a fast-paced trading environment, with heavy emphasis on stakeholder communication across London and regional desks. The ad reads as an experienced-hire req rather than a graduate programme, and leans strongly on quantitative finance and trading domain context.",
+   "priority": "low",
+   "key": "linkedin:4479123840",
+   "jd": "Job Type Full Time Job Reference # 345112BR City Hong Kong SAR Key Responsibilities Your role Are you excited by the prospect of engineering solutions in across Global Markets? Do you want to design, build and help deliver production systems across the front-office? Are you passionate about building and delivering AI solutions working directly with trading? We’re looking for a Trading AI Developer to work directly on the trading desk to: participate in the design, development, and implementation of quantitative models and analytics across the Global Markets business play a key role in designing and implementing the next generation of AI-powered systems, partnering closely with Trading, Structuring and Sales from idea generation through to production launch build and maintain strong working relationships with Trading, Structuring, Sales, Quant, IT, and Risk partners in London and across regions The team You’ll be working in our Quantitative Analytics team in London — a fast-paced, entrepreneurial environment. We build the tools, models, and workflows that drive the Front Office across asset classes, working side-by-side with them to architect solutions to real problems. You’ll develop models, applications, and workflows within UBS’s proprietary cloud-based quantitative analytics platform (ACQA), working closely with Trading, Structuring, Sales, Quant, and IT partners globally. Clean code, curiosity and the ability to build relationships and communicate ideas is crucial to the ...",
+   "first_seen": "2026-11-28T14:07:32+00:00",
+   "last_seen": "2026-11-28T14:07:32+00:00"
   }
  }
 }

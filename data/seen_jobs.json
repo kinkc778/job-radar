@@ -4215,12 +4215,13 @@
    "source": "jobsdb",
    "xkey": "axa hong kong and macau|data science analyst",
    "last_seen": "2026-11-26T16:02:49+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 75,
    "role_family": "AI / ML Engineering",
    "location": "Central and Western District",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T14:07:33+00:00"
   },
   "jobsdb:96092479": {
    "first_seen": "2026-11-26T16:02:49+00:00",
@@ -6366,12 +6367,13 @@
    "source": "efinancialcareers",
    "xkey": "futu holdings|2027 fresh grad hire data scientist",
    "last_seen": "2026-11-26T17:31:56+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 72,
    "role_family": "Data Science",
    "location": "Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T14:07:33+00:00"
   },
   "efinancialcareers:WOwQSbJ0ZDkdy7sY": {
    "first_seen": "2026-11-26T17:31:56+00:00",
@@ -6427,12 +6429,13 @@
    "source": "efinancialcareers",
    "xkey": "futu holdings|2027 fresh grad hire commercial data analyst",
    "last_seen": "2026-11-26T17:31:56+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 73,
    "role_family": "Data Analytics / BI",
    "location": "Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T14:07:33+00:00"
   },
   "efinancialcareers:93DWA0pNtS1a34k2": {
    "first_seen": "2026-11-26T17:31:56+00:00",
@@ -7598,12 +7601,13 @@
    "source": "workable",
    "xkey": "moomoo|2027 fresh grad hire ai algorithm engineer",
    "last_seen": "2026-11-26T17:50:42+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 75,
    "role_family": "AI / ML Engineering",
    "location": "Hong Kong, Hong Kong, Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T14:07:33+00:00"
   },
   "workable:81c25e78-4a8d-4e4f-9e0b-906fb83b2cb6": {
    "first_seen": "2026-11-26T17:50:42+00:00",
@@ -7824,12 +7828,13 @@
    "source": "workable",
    "xkey": "moomoo|2027 fresh grad hire intelligent r d and operations platform engineer",
    "last_seen": "2026-11-26T17:50:42+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 75,
    "role_family": "AI / ML Engineering",
    "location": "Hong Kong, Hong Kong, Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T14:07:33+00:00"
   },
   "workable:0556b5ea-0b3f-42d1-aa0c-ba0e5ce5f10f": {
    "first_seen": "2026-11-26T17:50:42+00:00",
@@ -9765,6 +9770,126 @@
    "location": "Hong Kong, Hong Kong SAR",
    "salary": "",
    "employment_type": "Full-time"
+  },
+  "linkedin:4407174751": {
+   "first_seen": "2026-11-28T14:07:18+00:00",
+   "title": "Manager, Charities (Data Science/ Programming)",
+   "company": "The Hong Kong Jockey Club",
+   "url": "https://www.linkedin.com/jobs/view/4407174751",
+   "source": "linkedin",
+   "xkey": "the hong kong jockey club|manager charities data science programming",
+   "last_seen": "2026-11-28T14:07:18+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Happy Valley, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "linkedin:4441189798": {
+   "first_seen": "2026-11-28T14:07:18+00:00",
+   "title": "Manager / Assistant Manager, Data Processing & Reporting",
+   "company": "OCBC",
+   "url": "https://www.linkedin.com/jobs/view/4441189798",
+   "source": "linkedin",
+   "xkey": "ocbc|manager assistant manager data processing reporting",
+   "last_seen": "2026-11-28T14:07:18+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "linkedin:4471451393": {
+   "first_seen": "2026-11-28T14:07:18+00:00",
+   "title": "Senior KDB+/q Developer - Equities E-Trading Platform",
+   "company": "Morgan Stanley",
+   "url": "https://www.linkedin.com/jobs/view/4471451393",
+   "source": "linkedin",
+   "xkey": "morgan stanley|senior kdb q developer equities e trading platform",
+   "last_seen": "2026-11-28T14:07:18+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Hong Kong, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "efinancialcareers:z4FW9M9Vr0JPAWRZ": {
+   "first_seen": "2026-11-28T14:07:18+00:00",
+   "title": "Risk & Proposition Platform, Principal",
+   "company": "AIA International Limited.",
+   "url": "https://www.efinancialcareers.hk/jobs-Hong_Kong-Hong_Kong-Risk__Proposition_Platform_Principal.id24830437",
+   "source": "efinancialcareers",
+   "xkey": "aia international limited|risk proposition platform principal",
+   "last_seen": "2026-11-28T14:07:18+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Hong Kong",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "linkedin:4443814137": {
+   "first_seen": "2026-11-28T14:07:33+00:00",
+   "title": "AI Engineer | Insurance",
+   "company": "Capco",
+   "url": "https://www.linkedin.com/jobs/view/4443814137",
+   "source": "linkedin",
+   "xkey": "capco|ai engineer insurance",
+   "last_seen": "2026-11-28T14:07:33+00:00",
+   "status": "emailed",
+   "score": 55,
+   "role_family": "AI / ML Engineering",
+   "location": "Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "efinancialcareers:uh9kLMMtNAaOL1Wo": {
+   "first_seen": "2026-11-28T14:07:33+00:00",
+   "title": "Deputy CTO (AI native Wealth Mgt Firm/up to HKD 3M)",
+   "company": "PERSOL Hong Kong Limited",
+   "url": "https://www.efinancialcareers.hk/jobs-Hong_Kong-Hong_Kong-Deputy_CTO_AI_native_Wealth_Mgt_Firmup_to_HKD_3M.id24682701",
+   "source": "efinancialcareers",
+   "xkey": "persol hong kong limited|deputy cto ai native wealth mgt firm up to hkd 3m",
+   "last_seen": "2026-11-28T14:07:33+00:00",
+   "status": "low_score",
+   "score": 5,
+   "role_family": "Other",
+   "location": "Hong Kong",
+   "salary": "HK$2m - HK$3m",
+   "employment_type": "Full-time"
+  },
+  "linkedin:4479123840": {
+   "first_seen": "2026-11-28T14:07:33+00:00",
+   "title": "Trading AI Developer",
+   "company": "UBS",
+   "url": "https://www.linkedin.com/jobs/view/4479123840",
+   "source": "linkedin",
+   "xkey": "ubs|trading ai developer",
+   "last_seen": "2026-11-28T14:07:33+00:00",
+   "status": "low_score",
+   "score": 50,
+   "role_family": "AI / ML Engineering",
+   "location": "Hong Kong, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "efinancialcareers:nfOjNRqmf8q14QfZ": {
+   "first_seen": "2026-11-28T14:07:33+00:00",
+   "title": "2027 Fresh Grad Hire - Backend Engineer (Market Data Connectivity)",
+   "company": "FUTU Holdings",
+   "url": "https://www.efinancialcareers.hk/jobs-Hong_Kong-Hong_Kong-2027_Fresh_Grad_Hire_-_Backend_Engineer_Market_Data_Connectivity.id24967323",
+   "source": "efinancialcareers",
+   "xkey": "futu holdings|2027 fresh grad hire backend engineer market data connectivity",
+   "last_seen": "2026-11-28T14:07:33+00:00",
+   "status": "low_score",
+   "score": 42,
+   "role_family": "Other",
+   "location": "Hong Kong",
+   "salary": "",
+   "employment_type": "Full-time"
   }
  },
  "runs": [
@@ -10173,6 +10298,42 @@
     "standardchartered": {
      "ok": true,
      "count": 59
+    }
+   }
+  },
+  {
+   "at": "2026-11-28T14:07:33+00:00",
+   "scanned": 947,
+   "new": 576,
+   "candidates": 4,
+   "evaluated": 4,
+   "matched": 1,
+   "emailed": 1,
+   "elapsed": 288,
+   "sources": {
+    "ats": {
+     "ok": true,
+     "count": 331
+    },
+    "linkedin": {
+     "ok": true,
+     "count": 288
+    },
+    "oracle": {
+     "ok": true,
+     "count": 63
+    },
+    "efinancialcareers": {
+     "ok": true,
+     "count": 167
+    },
+    "workable": {
+     "ok": true,
+     "count": 78
+    },
+    "standardchartered": {
+     "ok": true,
+     "count": 58
     }
    }
   }
