@@ -3866,12 +3866,13 @@
    "source": "ctgoodjobs",
    "xkey": "bright international education limited|ai and business systems engineer",
    "last_seen": "2026-11-26T15:59:30+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 76,
    "role_family": "AI / ML Engineering",
    "location": "Mong Kok, Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T00:32:56+00:00"
   },
   "ctgoodjobs:10333298": {
    "first_seen": "2026-11-26T15:59:30+00:00",
@@ -3881,12 +3882,13 @@
    "source": "ctgoodjobs",
    "xkey": "futu holdings|2027 fresh grad hire ai algorithm engineer",
    "last_seen": "2026-11-26T15:59:30+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 76,
    "role_family": "AI / ML Engineering",
    "location": "Hong Kong, Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T00:32:56+00:00"
   },
   "ctgoodjobs:10316952": {
    "first_seen": "2026-11-26T15:59:30+00:00",
@@ -5399,12 +5401,13 @@
    "source": "linkedin",
    "xkey": "sealincloud technology 1stephub|ai application engineer decision intelligence track",
    "last_seen": "2026-11-26T17:27:10+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 76,
    "role_family": "AI / ML Engineering",
    "location": "Hong Kong, Hong Kong SAR",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T00:32:56+00:00"
   },
   "linkedin:4492699140": {
    "first_seen": "2026-11-26T17:27:10+00:00",
@@ -6347,12 +6350,13 @@
    "source": "efinancialcareers",
    "xkey": "csop asset management limited|ai agent developer",
    "last_seen": "2026-11-26T17:31:56+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 76,
    "role_family": "AI / ML Engineering",
    "location": "Hong Kong",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T00:32:56+00:00"
   },
   "efinancialcareers:du6UCTXQR4fUNC1s": {
    "first_seen": "2026-11-26T17:31:56+00:00",
@@ -6723,12 +6727,13 @@
    "source": "linkedin",
    "xkey": "hkpc hong kong productivity council|consultant ai and intelligent systems ref smd 11117",
    "last_seen": "2026-11-26T17:43:56+00:00",
-   "status": "queued",
+   "status": "emailed",
    "score": 76,
    "role_family": "AI / ML Engineering",
    "location": "Kowloon, Hong Kong SAR",
    "salary": "",
-   "employment_type": "Full-time"
+   "employment_type": "Full-time",
+   "emailed_at": "2026-11-28T00:32:56+00:00"
   },
   "linkedin:4494788525": {
    "first_seen": "2026-11-26T17:43:56+00:00",
@@ -9685,6 +9690,81 @@
    "location": "Hong Kong, Hong Kong SAR",
    "salary": "",
    "employment_type": "Full-time"
+  },
+  "linkedin:4486919544": {
+   "first_seen": "2026-11-28T00:32:39+00:00",
+   "title": "Technology Lead Business Analyst, Vice President (Cash Equities)",
+   "company": "Citi",
+   "url": "https://www.linkedin.com/jobs/view/4486919544",
+   "source": "linkedin",
+   "xkey": "citi|technology lead business analyst vice president cash equities",
+   "last_seen": "2026-11-28T00:32:39+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Kowloon City District, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "linkedin:4486908730": {
+   "first_seen": "2026-11-28T00:32:39+00:00",
+   "title": "Securities Lending Technology Business Analyst (Equity Finance) Vice President",
+   "company": "Citi",
+   "url": "https://www.linkedin.com/jobs/view/4486908730",
+   "source": "linkedin",
+   "xkey": "citi|securities lending technology business analyst equity finance vice president",
+   "last_seen": "2026-11-28T00:32:39+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Kowloon City District, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "efinancialcareers:50utdV7keMEs1Ih2": {
+   "first_seen": "2026-11-28T00:32:39+00:00",
+   "title": "Senior Cloud Services Engineer - Associate - Cloud Platform Services - 12month contract",
+   "company": "Hong Kong Exchanges and Clearing Limited",
+   "url": "https://www.efinancialcareers.hk/jobs-Hong_Kong-Hong_Kong-Senior_Cloud_Services_Engineer_-_Associate_-_Cloud_Platform_Services_-_12month_contract.id24966379",
+   "source": "efinancialcareers",
+   "xkey": "hong kong exchanges and clearing limited|senior cloud services engineer associate cloud platform services 12month contract",
+   "last_seen": "2026-11-28T00:32:39+00:00",
+   "status": "filtered_senior",
+   "score": 0,
+   "role_family": "",
+   "location": "Hong Kong",
+   "salary": "",
+   "employment_type": "Contract"
+  },
+  "linkedin:4494482935": {
+   "first_seen": "2026-11-28T00:32:56+00:00",
+   "title": "Software Engineer",
+   "company": "Fidaro AI",
+   "url": "https://www.linkedin.com/jobs/view/4494482935",
+   "source": "linkedin",
+   "xkey": "fidaro ai|software engineer",
+   "last_seen": "2026-11-28T00:32:56+00:00",
+   "status": "low_score",
+   "score": 30,
+   "role_family": "Other",
+   "location": "Hong Kong, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
+  },
+  "linkedin:4488070864": {
+   "first_seen": "2026-11-28T00:32:56+00:00",
+   "title": "Associate Consultant, Data / Rewards Advisory",
+   "company": "Aon",
+   "url": "https://www.linkedin.com/jobs/view/4488070864",
+   "source": "linkedin",
+   "xkey": "aon|associate consultant data rewards advisory",
+   "last_seen": "2026-11-28T00:32:56+00:00",
+   "status": "low_score",
+   "score": 42,
+   "role_family": "Other",
+   "location": "Hong Kong, Hong Kong SAR",
+   "salary": "",
+   "employment_type": "Full-time"
   }
  },
  "runs": [
@@ -10049,6 +10129,42 @@
     "efinancialcareers": {
      "ok": true,
      "count": 170
+    },
+    "workable": {
+     "ok": true,
+     "count": 78
+    },
+    "standardchartered": {
+     "ok": true,
+     "count": 59
+    }
+   }
+  },
+  {
+   "at": "2026-11-28T00:32:56+00:00",
+   "scanned": 928,
+   "new": 554,
+   "candidates": 2,
+   "evaluated": 2,
+   "matched": 0,
+   "emailed": 0,
+   "elapsed": 293,
+   "sources": {
+    "ats": {
+     "ok": true,
+     "count": 331
+    },
+    "linkedin": {
+     "ok": true,
+     "count": 305
+    },
+    "oracle": {
+     "ok": true,
+     "count": 63
+    },
+    "efinancialcareers": {
+     "ok": true,
+     "count": 125
     },
     "workable": {
      "ok": true,
